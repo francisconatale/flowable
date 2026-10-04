@@ -5,10 +5,22 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Iniciando motor de Flowable...");
-        Map<String, Object> variables = new LinkedHashMap<>();
-        BpmnProcessRunner executeProcess = new BpmnProcessRunner("processes/MultipleInstances.bpmn20.xml", new Connection(true),
-                variables, "multipleinstances");
-        executeProcess.run();
+        System.out.println("Iniciando motor de Flowable en Main...");
+        
+        FlowableManager flowableManager = FlowableManager.createWithMemoryEngine();
+        
+        try {
+            flowableManager.registerBPMN("processes/MultipleInstances.bpmn20.xml");
+            
+            Map<String, Object> variables = new LinkedHashMap<>();
+            flowableManager.startInstance("multipleinstances", variables);
+            
+            flowableManager.getTaskService().createTaskQuery().list().forEach(task -> {
+                System.out.println("Tarea pendiente: " + task.getName());
+            });
+
+        } finally {
+            flowableManager.closeEngine();
+        }
     }
 }
