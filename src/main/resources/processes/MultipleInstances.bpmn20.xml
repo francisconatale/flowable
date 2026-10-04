@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.flowable.org/processdef" exporter="Flowable Open Source Modeler" exporterVersion="6.8.0">
+  <process id="multipleinstances" name="Multiple Instances with a Priori Design-Time Knowledge Secuencial" isExecutable="true">
+
+    <startEvent id="startEvent1" flowable:formFieldValidation="true">
+      <extensionElements>
+        <flowable:executionListener event="start" class="unrc.flowable.multiexecutionlisteners.MultiInstanceCollectionSeeder"></flowable:executionListener>
+      </extensionElements>
+    </startEvent>
+    <userTask id="sid-0360A70A-BE52-4684-B5E5-439C08026132" name="procesar coleccion" flowable:assignee="$INITIATOR" flowable:formFieldValidation="true">
+      <documentation>Nombre del candidato: ${candidato}</documentation>
+      <extensionElements>
+        <flowable:executionListener event="start" class="unrc.flowable.multiexecutionlisteners.MultiInstanceExecutionListener"></flowable:executionListener>
+        <flowable:taskListener event="create" class="unrc.flowable.multiexecutionlisteners.MultiInstanceTaskListener"></flowable:taskListener>
+        <modeler:activiti-idm-initiator xmlns:modeler="http://flowable.org/modeler"><![CDATA[true]]></modeler:activiti-idm-initiator>
+      </extensionElements>
+      <multiInstanceLoopCharacteristics isSequential="false" flowable:collection="empleados" flowable:elementVariable="empleado">
+        <extensionElements></extensionElements>
+      </multiInstanceLoopCharacteristics>
+    </userTask>
+    <endEvent id="sid-FB2C5765-8F1F-445C-994A-A85EC7A74921"></endEvent>
+    <sequenceFlow id="sid-CF16C468-428D-40D9-928F-C25DD8D819F8" sourceRef="sid-0360A70A-BE52-4684-B5E5-439C08026132" targetRef="sid-FB2C5765-8F1F-445C-994A-A85EC7A74921"></sequenceFlow>
+    <sequenceFlow id="sid-94100955-4669-479B-B1AC-777B98AF47F2" sourceRef="startEvent1" targetRef="sid-0360A70A-BE52-4684-B5E5-439C08026132"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_multipleinstances">
+    <bpmndi:BPMNPlane bpmnElement="multipleinstances" id="BPMNPlane_multipleinstances">
+      <bpmndi:BPMNShape bpmnElement="startEvent1" id="BPMNShape_startEvent1">
+        <omgdc:Bounds height="30.0" width="30.0" x="100.0" y="175.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-0360A70A-BE52-4684-B5E5-439C08026132" id="BPMNShape_sid-0360A70A-BE52-4684-B5E5-439C08026132">
+        <omgdc:Bounds height="80.0" width="100.0" x="240.0" y="150.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-FB2C5765-8F1F-445C-994A-A85EC7A74921" id="BPMNShape_sid-FB2C5765-8F1F-445C-994A-A85EC7A74921">
+        <omgdc:Bounds height="28.0" width="28.0" x="435.0" y="176.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-94100955-4669-479B-B1AC-777B98AF47F2" id="BPMNEdge_sid-94100955-4669-479B-B1AC-777B98AF47F2" flowable:sourceDockerX="15.0" flowable:sourceDockerY="15.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="129.94999940317362" y="190.0"></omgdi:waypoint>
+        <omgdi:waypoint x="239.99999999993753" y="190.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-CF16C468-428D-40D9-928F-C25DD8D819F8" id="BPMNEdge_sid-CF16C468-428D-40D9-928F-C25DD8D819F8" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="339.94999999996054" y="190.0"></omgdi:waypoint>
+        <omgdi:waypoint x="435.0" y="190.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:flowable="http://flowable.org/bpmn"
+             targetNamespace="http://www.flowable.org/processdef">
+
+    <!-- El "id" del process es el "key" que usas en el código (startProcessInstanceByKey) -->
+    <process id="miProcesoId" name="Un Proceso de Prueba" isExecutable="true">
+        
+        <startEvent id="startEvent" />
+        <sequenceFlow sourceRef="startEvent" targetRef="miServiceTask" />
+
+        <!-- AQUÍ ESTÁ LA MAGIA: flowable:class vincula esta cajita con tu código Java -->
+        <serviceTask id="miServiceTask" name="Ejecutar Código Java" 
+                     flowable:class="unrc.flowable.MiServicioTask" />
+        
+        <sequenceFlow sourceRef="miServiceTask" targetRef="endEvent" />
+        <endEvent id="endEvent" />
+        
+    </process>
+
+</definitions>

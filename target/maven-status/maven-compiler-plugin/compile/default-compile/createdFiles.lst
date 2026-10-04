@@ -1,0 +1,9 @@
+unrc/flowable/Connection.class
+unrc/flowable/multiexecutionlisteners/MultiInstanceCollectionSeeder.class
+unrc/flowable/Main.class
+unrc/flowable/BpmnProcessRunner.class
+unrc/flowable/multiexecutionlisteners/MultiInstanceTaskListener.class
+unrc/flowable/MiServicioTask.class
+unrc/flowable/testexecutionlistener/SeedCollection.class
+unrc/flowable/testexecutionlistener/ProcessCollection.class
+unrc/flowable/multiexecutionlisteners/MultiInstanceExecutionListener.class

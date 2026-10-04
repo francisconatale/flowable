@@ -1,0 +1,9 @@
+/home/francisco/flowable-practice/src/main/java/unrc/flowable/BpmnProcessRunner.java
+/home/francisco/flowable-practice/src/main/java/unrc/flowable/Connection.java
+/home/francisco/flowable-practice/src/main/java/unrc/flowable/Main.java
+/home/francisco/flowable-practice/src/main/java/unrc/flowable/MiServicioTask.java
+/home/francisco/flowable-practice/src/main/java/unrc/flowable/multiexecutionlisteners/MultiInstanceCollectionSeeder.java
+/home/francisco/flowable-practice/src/main/java/unrc/flowable/multiexecutionlisteners/MultiInstanceExecutionListener.java
+/home/francisco/flowable-practice/src/main/java/unrc/flowable/multiexecutionlisteners/MultiInstanceTaskListener.java
+/home/francisco/flowable-practice/src/main/java/unrc/flowable/testexecutionlistener/ProcessCollection.java
+/home/francisco/flowable-practice/src/main/java/unrc/flowable/testexecutionlistener/SeedCollection.java
