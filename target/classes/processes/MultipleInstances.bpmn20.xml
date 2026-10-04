@@ -8,7 +8,7 @@
       </extensionElements>
     </startEvent>
     <userTask id="sid-0360A70A-BE52-4684-B5E5-439C08026132" name="procesar coleccion" flowable:assignee="$INITIATOR" flowable:formFieldValidation="true">
-      <documentation>Nombre del candidato: ${candidato}</documentation>
+      <documentation>Nombre del empleado: ${empleado}</documentation>
       <extensionElements>
         <flowable:executionListener event="start" class="unrc.flowable.multiexecutionlisteners.MultiInstanceExecutionListener"></flowable:executionListener>
         <flowable:taskListener event="create" class="unrc.flowable.multiexecutionlisteners.MultiInstanceTaskListener"></flowable:taskListener>
