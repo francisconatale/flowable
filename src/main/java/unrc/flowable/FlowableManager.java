@@ -1,10 +1,6 @@
 package unrc.flowable;
 
-import org.flowable.engine.ProcessEngine;
-import org.flowable.engine.ProcessEngineConfiguration;
-import org.flowable.engine.RepositoryService;
-import org.flowable.engine.RuntimeService;
-import org.flowable.engine.TaskService;
+import org.flowable.engine.*;
 import org.flowable.engine.repository.Deployment;
 import org.flowable.engine.runtime.ProcessInstance;
 
@@ -20,6 +16,7 @@ public class FlowableManager {
     private final RepositoryService repositoryService;
     private final RuntimeService runtimeService;
     private final TaskService taskService;
+    private final HistoryService historyService;
 
     // Inyección del motor ya construido (ideal para poder pasar el motor desde los tests o desde Main)
     public FlowableManager(ProcessEngine processEngine) {
@@ -27,6 +24,7 @@ public class FlowableManager {
         this.repositoryService = processEngine.getRepositoryService();
         this.runtimeService = processEngine.getRuntimeService();
         this.taskService = processEngine.getTaskService();
+        this.historyService = processEngine.getHistoryService();
     }
 
     /**
@@ -84,10 +82,14 @@ public class FlowableManager {
                 .list();
     }
 
+
+
     public ProcessEngine getProcessEngine() { return processEngine; }
     public RepositoryService getRepositoryService() { return repositoryService; }
     public RuntimeService getRuntimeService() { return runtimeService; }
     public TaskService getTaskService() { return taskService; }
+    public HistoryService getHistoryService(){ return historyService; }
+
     
     public void closeEngine() {
         if (processEngine != null) {
