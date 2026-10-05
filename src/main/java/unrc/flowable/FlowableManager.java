@@ -1,10 +1,15 @@
 package unrc.flowable;
 
+import org.apache.ibatis.javassist.runtime.Cflow;
 import org.flowable.engine.*;
 import org.flowable.engine.repository.Deployment;
 import org.flowable.engine.runtime.ProcessInstance;
 import org.flowable.task.api.history.HistoricTaskInstance;
+import org.flowable.variable.api.history.HistoricVariableInstance;
 
+import java.time.Duration;
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -38,7 +43,7 @@ public class FlowableManager {
                 .buildProcessEngine();
         return new FlowableManager(engine);
     }
-    
+
     public static FlowableManager createFromXmlConfig() {
         ProcessEngine engine = ProcessEngineConfiguration
                 .createProcessEngineConfigurationFromResourceDefault()
@@ -88,14 +93,67 @@ public class FlowableManager {
         return this.getHistoryService().createHistoricTaskInstanceQuery().processInstanceId(processId).list();
     }
 
+    public List<HistoricVariableInstance> getHistoryVariableForTaskId(String taskId){
+        return this.getHistoryService().createHistoricVariableInstanceQuery().processInstanceId(taskId).list();
+    }
+    // h.getProcessId() -> obtiene el id que se le dio a esa tarea, getId() te da el id global de la task la definicion
     public void printHistoryForProcessId(String processId){
         for(HistoricTaskInstance h : getHistoryForProcessId(processId)){
             String name = h.getName();
             String create_date = h.getCreateTime().toString();
+            System.out.println("variables: ");
+            for(HistoricVariableInstance variable : getHistoryVariableForTaskId(h.getProcessInstanceId())){
+                System.out.println(variable.getVariableName() + "->" + variable.getValue());
+            }
             System.out.println("nombre de la tarea: " + name +  " fecha de creacion" + create_date + "fecha de fin" + h.getEndTime().toString());
         }
     }
+    /* Dado un usuario, listar las tareas que completó, indicando el proceso al que pertenecen, la fecha
+de inicio, la fecha de nalización y su duración.
+*/
+    public void printHistoryTasksForUserId(String userId){
+        HistoricTaskInstance historic = this.historyService.createHistoricTaskInstanceQuery().taskInvolvedUser(userId).list().get(0);
+        System.out.println("pertenece al proceso: " + historic.getProcessDefinitionId());
+        for(HistoricTaskInstance historicTaskInstance: this.historyService.createHistoricTaskInstanceQuery().taskInvolvedUser(userId).list()){
+            System.out.println("pertenecen al proceso: ");
+            System.out.println("TAREA QUE RESOLVIO: " + historicTaskInstance.getName());
+            System.out.println("FECHA EN QUE SE INICIO: " + historicTaskInstance.getStartTime().toString());
+            System.out.println("FECHA EN QUE LA RESOLVIO: " + historicTaskInstance.getEndTime().toString());
+        }
 
+    }
+
+    public void printTimeStatsForProcessId(String processId) {
+
+        long total = 0;
+        long min = Long.MAX_VALUE;
+        long max = Long.MIN_VALUE;
+        int count = 0;
+
+        for (HistoricTaskInstance task : getHistoryForProcessId(processId)) {
+
+            if (task.getStartTime() == null || task.getEndTime() == null) {
+                continue;
+            }
+
+            long time = task.getEndTime().getTime()
+                    - task.getStartTime().getTime();
+
+            total += time;
+            min = Math.min(min, time);
+            max = Math.max(max, time);
+            count++;
+        }
+
+        if (count == 0) {
+            System.out.println("No hay tareas completadas.");
+            return;
+        }
+
+        System.out.println("Tiempo promedio: " + (total / count) / (1000 * 60) + " minutos");
+        System.out.println("Tiempo mínimo: " + min / (1000 * 60) + " minutos");
+        System.out.println("Tiempo máximo: " + max / (1000 * 60) + " minutos");
+    }
 
 
     public ProcessEngine getProcessEngine() { return processEngine; }
@@ -104,7 +162,7 @@ public class FlowableManager {
     public TaskService getTaskService() { return taskService; }
     public HistoryService getHistoryService(){ return historyService; }
 
-    
+
     public void closeEngine() {
         if (processEngine != null) {
             processEngine.close();

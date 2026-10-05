@@ -15,7 +15,7 @@ public class Main {
     public static void main(String[] args) {
         FlowableManager flowableManager = FlowableManager.createFromXmlConfig();
         try {
-          flowableManager.printHistoryForProcessId("2505");
+          flowableManager.printTimeStatsForProcessId("2505");
         } finally {
             flowableManager.closeEngine();
         }
