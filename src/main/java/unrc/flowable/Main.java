@@ -15,12 +15,7 @@ public class Main {
     public static void main(String[] args) {
         FlowableManager flowableManager = FlowableManager.createFromXmlConfig();
         try {
-            List<HistoricTaskInstance> history = flowableManager.getHistoryService().createHistoricTaskInstanceQuery().processInstanceId("2505").list();
-            for(HistoricTaskInstance h : history){
-                String name = h.getName();
-              String create_date = h.getCreateTime().toString();
-                System.out.println("nombre de la tarea: " + name +  " fecha de creacion" + create_date + "fecha de fin" + h.getEndTime().toString());
-            }
+          flowableManager.printHistoryForProcessId("2505");
         } finally {
             flowableManager.closeEngine();
         }

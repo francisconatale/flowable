@@ -3,7 +3,9 @@ package unrc.flowable;
 import org.flowable.engine.*;
 import org.flowable.engine.repository.Deployment;
 import org.flowable.engine.runtime.ProcessInstance;
+import org.flowable.task.api.history.HistoricTaskInstance;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -80,6 +82,18 @@ public class FlowableManager {
         return taskService.createTaskQuery()
                 .active()
                 .list();
+    }
+
+    public List<HistoricTaskInstance> getHistoryForProcessId(String processId) {
+        return this.getHistoryService().createHistoricTaskInstanceQuery().processInstanceId(processId).list();
+    }
+
+    public void printHistoryForProcessId(String processId){
+        for(HistoricTaskInstance h : getHistoryForProcessId(processId)){
+            String name = h.getName();
+            String create_date = h.getCreateTime().toString();
+            System.out.println("nombre de la tarea: " + name +  " fecha de creacion" + create_date + "fecha de fin" + h.getEndTime().toString());
+        }
     }
 
 
