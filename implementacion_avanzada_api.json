@@ -1,0 +1,575 @@
+{
+  "info": {
+    "_postman_id": "01bbe5ca-1c21-4157-920a-566f0b7c817b",
+    "name": "My Collection",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56467324",
+    "_collection_link": "https://go.postman.co/collection/56467324-01bbe5ca-1c21-4157-920a-566f0b7c817b?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Flowable",
+      "item": [
+        {
+          "name": "Find process definition by name",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "test",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "admin",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_BASE}}/repository/process-definitions",
+              "host": [
+                "{{API_BASE}}"
+              ],
+              "path": [
+                "repository",
+                "process-definitions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get process definition by id",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "test",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "admin",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_BASE}}/repository/process-definitions/formulariodeproducto:1:4",
+              "host": [
+                "{{API_BASE}}"
+              ],
+              "path": [
+                "repository",
+                "process-definitions",
+                "formulariodeproducto:1:4"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Instance a process definition",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "test",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "admin",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"processDefinitionId\":\"formulariodeproducto:1:4\",\n   \"businessKey\":\"myBusinessKey\",\n   \"returnVariables\":true,\n   \"variables\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/runtime/process-instances",
+              "host": [
+                "{{API_BASE}}"
+              ],
+              "path": [
+                "runtime",
+                "process-instances"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List a details for a process instance",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "test",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "admin",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_BASE}}/runtime/process-instances/0b429f51-c078-11f1-a52b-9ae1801cbfe2",
+              "host": [
+                "{{API_BASE}}"
+              ],
+              "path": [
+                "runtime",
+                "process-instances",
+                "0b429f51-c078-11f1-a52b-9ae1801cbfe2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List a tasks for a process definition",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "test",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "admin",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_BASE}}/runtime/process-instances/0b429f51-c078-11f1-a52b-9ae1801cbfe2",
+              "host": [
+                "{{API_BASE}}"
+              ],
+              "path": [
+                "runtime",
+                "process-instances",
+                "0b429f51-c078-11f1-a52b-9ae1801cbfe2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "List a tasks for a concrete process instance",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "test",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "admin",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_BASE}}/runtime/process-instances/0b429f51-c078-11f1-a52b-9ae1801cbfe2",
+              "host": [
+                "{{API_BASE}}"
+              ],
+              "path": [
+                "runtime",
+                "process-instances",
+                "0b429f51-c078-11f1-a52b-9ae1801cbfe2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Tasks for a group Alumnos",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "test",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "admin",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_BASE}}/runtime/tasks?candidateGroups=alumnos",
+              "host": [
+                "{{API_BASE}}"
+              ],
+              "path": [
+                "runtime",
+                "tasks"
+              ],
+              "query": [
+                {
+                  "key": "candidateGroups",
+                  "value": "alumnos"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get a form for complete a task",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "test",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "alumno1",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{API_BASE}}/form/form-data?taskId=15020",
+              "host": [
+                "{{API_BASE}}"
+              ],
+              "path": [
+                "form",
+                "form-data"
+              ],
+              "query": [
+                {
+                  "key": "taskId",
+                  "value": "15020"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Complete a task form",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "test",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "alumno1",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\" : \"complete\",\n  \"variables\" : [\"cantidad\": \"50\"]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/runtime/tasks/15006/form",
+              "host": [
+                "{{API_BASE}}"
+              ],
+              "path": [
+                "runtime",
+                "tasks",
+                "15006",
+                "form"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get a historic process finished",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "test",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "alumno1",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\" : \"complete\",\n  \"variables\" : [\"cantidad\": \"50\"]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/history/historic-process-instances",
+              "host": [
+                "{{API_BASE}}"
+              ],
+              "path": [
+                "history",
+                "historic-process-instances"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get a historic activity for process instance",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "test",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "alumno1",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\" : \"complete\",\n  \"variables\" : [\"cantidad\": \"50\"]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/history/historic-process-instances",
+              "host": [
+                "{{API_BASE}}"
+              ],
+              "path": [
+                "history",
+                "historic-process-instances"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get info for concrete activity with activityInstanceId",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "test",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "alumno1",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\" : \"complete\",\n  \"variables\" : [\"cantidad\": \"50\"]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/history/historic-process-instances",
+              "host": [
+                "{{API_BASE}}"
+              ],
+              "path": [
+                "history",
+                "historic-process-instances"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get historic variables for a finished process instance",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "test",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "alumno1",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\" : \"complete\",\n  \"variables\" : [\"cantidad\": \"50\"]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/history/historic-process-instances",
+              "host": [
+                "{{API_BASE}}"
+              ],
+              "path": [
+                "history",
+                "historic-process-instances"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get a ended tasks for a concrete user",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "test",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "alumno1",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\" : \"complete\",\n  \"variables\" : [\"cantidad\": \"50\"]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{API_BASE}}/history/historic-process-instances",
+              "host": [
+                "{{API_BASE}}"
+              ],
+              "path": [
+                "history",
+                "historic-process-instances"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
